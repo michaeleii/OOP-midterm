@@ -6,4 +6,7 @@ export class Artist {
 	constructor(name: string) {
 		this.name = name;
 	}
+	addAlbum(album: Album): void {
+		this.albums.push(album);
+	}
 }
