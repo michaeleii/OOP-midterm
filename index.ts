@@ -31,6 +31,8 @@ let user = new User("Michael", "password123");
 user.addPlaylist(localPlaylist);
 user.addPlaylist(cloudPlaylist);
 
+user.addAlbums(album);
+
 console.log("Getting Playlists...");
 console.log(user.getPlaylists());
 

@@ -26,7 +26,9 @@ export class User {
 	addPlaylist(playlist: Playlist): void {
 		this._playlists.push(playlist);
 	}
-	addAlbums(album: Album): void {}
+	addAlbums(album: Album): void {
+		this._albums.push(album);
+	}
 	getSongs(): Song[] {
 		let songs: Song[] = [];
 		this._playlists.forEach((playlist) => {
