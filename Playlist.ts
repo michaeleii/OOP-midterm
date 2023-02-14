@@ -13,6 +13,9 @@ export class Playlist {
 	get name(): string {
 		return this._name;
 	}
+	getSongs(): Song[] {
+		return this._songs;
+	}
 	addAlbum(album: Album): void {
 		this._songs = this._songs.concat(album.getTracks());
 	}

@@ -1,11 +1,12 @@
 import { Album } from "./Album";
 import { Playlist } from "./Playlist";
+import { Song } from "./Song";
 
 export class User {
 	private _username: string = "";
 	private _password: string = "";
-	private playlists: Playlist[] = [];
-	private albums: Album[] = [];
+	private _playlists: Playlist[] = [];
+	private _albums: Album[] = [];
 	constructor(username: string, password: string) {
 		this.username = username;
 		this.password = password;
@@ -23,18 +24,22 @@ export class User {
 		this._password = password;
 	}
 	addPlaylist(playlist: Playlist): void {
-		this.playlists.push(playlist);
+		this._playlists.push(playlist);
 	}
 	addAlbums(album: Album): void {
-		this.albums.push(album);
+		this._albums.push(album);
 	}
-	getSongs() {
-		return this.albums.map((album) => album.tracks).flat();
+	getSongs(): Song[] {
+		const songs: Song[] = [];
+		this._playlists.forEach((playlist) => {
+			songs.concat(playlist.getSongs());
+		});
+		return songs;
 	}
 	getPlaylists(): Playlist[] {
-		return this.playlists;
+		return this._playlists;
 	}
 	getAlbums(): Album[] {
-		return this.albums;
+		return this._albums;
 	}
 }

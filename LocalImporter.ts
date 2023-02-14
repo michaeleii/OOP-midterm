@@ -11,12 +11,25 @@ export class LocalImporter implements IImportable {
 	}
 	loadPlaylist(): Playlist {
 		console.log(`Your playlist at location ${this.path} will be loaded`);
-		const playlist = require(`./${this.path}`);
+		const playlist: {
+			albums: [
+				{
+					name: string;
+					tracks: Song[];
+				}
+			];
+		} = require(`./${this.path}`);
 		const pl = new Playlist("My Playlist");
-		playlist.albums.forEach((album: any) => {
-			album.tracks.forEach((track: any) => album.addTrack(track));
-			pl.addAlbum(album);
+		playlist.albums.forEach((album) => {
+			const artist = new Artist(album.name);
+			const alb = new Album(album.name, artist, 2020);
+			album.tracks.forEach((track) => {
+				const song = new Song(album.name);
+				alb.addTrack(song);
+			});
+			pl.addAlbum(alb);
 		});
+		console.log(pl);
 		return pl;
 	}
 }
