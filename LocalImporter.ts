@@ -15,7 +15,7 @@ export class LocalImporter implements IImportable {
 			albums: [
 				{
 					name: string;
-					tracks: Song[];
+					tracks: string[];
 				}
 			];
 		} = require(`./${this.path}`);
@@ -24,7 +24,7 @@ export class LocalImporter implements IImportable {
 			const artist = new Artist(album.name);
 			const alb = new Album(album.name, artist, 2020);
 			album.tracks.forEach((track) => {
-				const song = new Song(album.name);
+				const song = new Song(track);
 				alb.addTrack(song);
 			});
 			pl.addAlbum(alb);

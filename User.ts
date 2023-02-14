@@ -30,9 +30,9 @@ export class User {
 		this._albums.push(album);
 	}
 	getSongs(): Song[] {
-		const songs: Song[] = [];
+		let songs: Song[] = [];
 		this._playlists.forEach((playlist) => {
-			songs.concat(playlist.getSongs());
+			songs = songs.concat(playlist.getSongs());
 		});
 		return songs;
 	}
