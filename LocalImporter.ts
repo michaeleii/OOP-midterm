@@ -3,6 +3,7 @@ import { Artist } from "./Artist";
 import { IImportable } from "./IImportable";
 import { Playlist } from "./Playlist";
 import { Song } from "./Song";
+import { User } from "./User";
 
 export class LocalImporter implements IImportable {
 	path: string;
@@ -29,7 +30,6 @@ export class LocalImporter implements IImportable {
 			});
 			pl.addAlbum(alb);
 		});
-		console.log(pl);
 		return pl;
 	}
 }
