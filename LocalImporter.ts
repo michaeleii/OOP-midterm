@@ -29,6 +29,7 @@ export class LocalImporter implements IImportable {
 				alb.addTrack(song);
 			});
 			pl.addAlbum(alb);
+			artist.addAlbum(alb);
 		});
 		return pl;
 	}
